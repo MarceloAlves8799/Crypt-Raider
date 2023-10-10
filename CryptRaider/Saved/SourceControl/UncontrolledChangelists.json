@@ -6,7 +6,8 @@
 			"description": "Default Uncontrolled Changelist",
 			"files": [
 				"D:/Unreal/Crypt-Raider/CryptRaider/Content/StarterContent/Particles/P_Ambient_Dust.uasset",
-				"D:/Unreal/Crypt-Raider/CryptRaider/Content/Dungeon.umap"
+				"D:/Unreal/Crypt-Raider/CryptRaider/Content/Dungeon.umap",
+				"D:/Unreal/Crypt-Raider/CryptRaider/Content/MedievalDungeon/Materials/M_Tiling_Master.uasset"
 			]
 		}
 	]
