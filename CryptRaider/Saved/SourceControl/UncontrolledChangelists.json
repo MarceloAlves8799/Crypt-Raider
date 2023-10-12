@@ -7,7 +7,10 @@
 			"files": [
 				"D:/Unreal/Crypt-Raider/CryptRaider/Content/StarterContent/Particles/P_Ambient_Dust.uasset",
 				"D:/Unreal/Crypt-Raider/CryptRaider/Content/Dungeon.umap",
-				"D:/Unreal/Crypt-Raider/CryptRaider/Content/MedievalDungeon/Materials/M_Tiling_Master.uasset"
+				"D:/Unreal/Crypt-Raider/CryptRaider/Content/MedievalDungeon/Materials/M_Tiling_Master.uasset",
+				"D:/Unreal/Crypt-Raider/CryptRaider/Content/BP_Player.uasset",
+				"D:/Unreal/Crypt-Raider/CryptRaider/Content/MedievalDungeon/Meshes/Architecture/Dungeon/SM_Floor.uasset",
+				"D:/Unreal/Crypt-Raider/CryptRaider/Content/BP_CryptRaiderGameMode.uasset"
 			]
 		}
 	]
