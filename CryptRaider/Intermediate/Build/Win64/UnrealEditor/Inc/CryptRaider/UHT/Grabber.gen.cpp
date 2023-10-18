@@ -14,8 +14,72 @@ void EmptyLinkFunctionForGeneratedCodeGrabber() {}
 	ENGINE_API UClass* Z_Construct_UClass_USceneComponent();
 	UPackage* Z_Construct_UPackage__Script_CryptRaider();
 // End Cross Module References
+	DEFINE_FUNCTION(UGrabber::execRelease)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Release();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UGrabber::execGrab)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Grab();
+		P_NATIVE_END;
+	}
 	void UGrabber::StaticRegisterNativesUGrabber()
 	{
+		UClass* Class = UGrabber::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "Grab", &UGrabber::execGrab },
+			{ "Release", &UGrabber::execRelease },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UGrabber_Grab_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UGrabber_Grab_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Grabber.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UGrabber_Grab_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UGrabber, nullptr, "Grab", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UGrabber_Grab_Statics::Function_MetaDataParams), Z_Construct_UFunction_UGrabber_Grab_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_UGrabber_Grab()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UGrabber_Grab_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UGrabber_Release_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UGrabber_Release_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Grabber.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UGrabber_Release_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UGrabber, nullptr, "Release", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UGrabber_Release_Statics::Function_MetaDataParams), Z_Construct_UFunction_UGrabber_Release_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_UGrabber_Release()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UGrabber_Release_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UGrabber);
 	UClass* Z_Construct_UClass_UGrabber_NoRegister()
@@ -25,6 +89,7 @@ void EmptyLinkFunctionForGeneratedCodeGrabber() {}
 	struct Z_Construct_UClass_UGrabber_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -45,6 +110,11 @@ void EmptyLinkFunctionForGeneratedCodeGrabber() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_CryptRaider,
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UGrabber_Statics::DependentSingletons) < 16);
+	const FClassFunctionLinkInfo Z_Construct_UClass_UGrabber_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UGrabber_Grab, "Grab" }, // 4165048377
+		{ &Z_Construct_UFunction_UGrabber_Release, "Release" }, // 3144099577
+	};
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UGrabber_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UGrabber_Statics::Class_MetaDataParams[] = {
 		{ "BlueprintSpawnableComponent", "" },
@@ -80,11 +150,11 @@ void EmptyLinkFunctionForGeneratedCodeGrabber() {}
 		"Engine",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_UGrabber_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_UGrabber_Statics::PropPointers),
 		0,
 		0x00B000A4u,
@@ -110,9 +180,9 @@ void EmptyLinkFunctionForGeneratedCodeGrabber() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CryptRaider_Source_CryptRaider_Grabber_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UGrabber, UGrabber::StaticClass, TEXT("UGrabber"), &Z_Registration_Info_UClass_UGrabber, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGrabber), 2189574495U) },
+		{ Z_Construct_UClass_UGrabber, UGrabber::StaticClass, TEXT("UGrabber"), &Z_Registration_Info_UClass_UGrabber, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGrabber), 1474269514U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CryptRaider_Source_CryptRaider_Grabber_h_991419109(TEXT("/Script/CryptRaider"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CryptRaider_Source_CryptRaider_Grabber_h_476880908(TEXT("/Script/CryptRaider"),
 		Z_CompiledInDeferFile_FID_CryptRaider_Source_CryptRaider_Grabber_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CryptRaider_Source_CryptRaider_Grabber_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
