@@ -90,5 +90,11 @@
     <ClInclude Include="..\..\Source\CryptRaider\TP_WeaponComponent.h">
       <Filter>Source\CryptRaider</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\CryptRaider\TriggerComponent.cpp">
+      <Filter>Source\CryptRaider</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CryptRaider\TriggerComponent.h">
+      <Filter>Source\CryptRaider</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
