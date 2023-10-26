@@ -18,5 +18,15 @@ void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	UE_LOG(LogTemp, Display, TEXT("Tick"));
+	TArray<AActor*> Actors;
+	GetOverlappingActors(Actors);
+
+	for(AActor* Actor : Actors)
+	{
+		if(Actor->ActorHasTag(AcceptableActorTag))
+		{
+			UE_LOG(LogTemp, Display, TEXT("Unlocked!"));
+		}
+	}
+	
 }
