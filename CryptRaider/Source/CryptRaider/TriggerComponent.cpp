@@ -18,15 +18,30 @@ void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	AActor* UnlockActor = GetAcceptableActor();
+	bool ShouldMove = UnlockActor != nullptr;
+
+	if(Mover != nullptr)
+		Mover->SetShouldMove(ShouldMove);
+}
+
+void UTriggerComponent::SetMover(UMover* NewMover)
+{
+	Mover = NewMover;
+}
+
+AActor* UTriggerComponent::GetAcceptableActor() const
+{
 	TArray<AActor*> Actors;
 	GetOverlappingActors(Actors);
 
-	for(AActor* Actor : Actors)
+	for (AActor* Actor : Actors)
 	{
-		if(Actor->ActorHasTag(AcceptableActorTag))
+		if (Actor->ActorHasTag(AcceptableActorTag))
 		{
-			UE_LOG(LogTemp, Display, TEXT("Unlocked!"));
+			return Actor;
 		}
 	}
-	
+
+	return nullptr;
 }
