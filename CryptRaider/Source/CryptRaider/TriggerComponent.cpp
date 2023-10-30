@@ -19,10 +19,19 @@ void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	AActor* UnlockActor = GetAcceptableActor();
-	bool ShouldMove = UnlockActor != nullptr;
+	if (UnlockActor == nullptr) return;
+	
+	UPrimitiveComponent* Component = Cast<UPrimitiveComponent>(UnlockActor->GetRootComponent());
+	if(Component != nullptr)
+	{
+		Component->SetSimulatePhysics(false);
+	}
+	UnlockActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
 
-	if(Mover != nullptr)
-		Mover->SetShouldMove(ShouldMove);
+	if (Mover == nullptr) return;
+
+	bool ShouldMove = UnlockActor != nullptr;
+	Mover->SetShouldMove(ShouldMove);
 }
 
 void UTriggerComponent::SetMover(UMover* NewMover)
@@ -37,7 +46,10 @@ AActor* UTriggerComponent::GetAcceptableActor() const
 
 	for (AActor* Actor : Actors)
 	{
-		if (Actor->ActorHasTag(AcceptableActorTag))
+		bool HasAcceptableTag = Actor->ActorHasTag(AcceptableActorTag);
+		bool IsGrabbed = Actor->ActorHasTag("Grabbed");
+
+		if (HasAcceptableTag && !IsGrabbed)
 		{
 			return Actor;
 		}
